@@ -1,6 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -29,15 +33,81 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
+    def dependencies = rootProject.ext
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.6.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+
+    implementation(
+
+            dependencies.uiDependencies.material,
+            dependencies.uiDependencies.navigationFragment,
+            dependencies.uiDependencies.navigationUI,
+            dependencies.uiDependencies.fragment,
+            dependencies.uiDependencies.constraintLayout,
+            dependencies.uiDependencies.androidLegacy,
+            dependencies.uiDependencies.appCompat,
+            dependencies.uiDependencies.loadingButton,
+            dependencies.uiDependencies.shimmer,
+
+            dependencies.appDependencies.androidKtx,
+            dependencies.appDependencies.daggerHiltAndroid,
+            dependencies.appDependencies.coroutines,
+            dependencies.appDependencies.coroutinesAndroid,
+            dependencies.appDependencies.kotlinDependency,
+            dependencies.appDependencies.timber,
+
+            dependencies.remoteDependencies.gson,
+            dependencies.remoteDependencies.retrofit,
+            dependencies.remoteDependencies.retrofitConversion,
+            dependencies.remoteDependencies.okHttpLoggingInterceptor,
+            dependencies.remoteDependencies.okHttp,
+            dependencies.remoteDependencies.moshi,
+            dependencies.remoteDependencies.moshiKotlin,
+            dependencies.remoteDependencies.moshiConverter,
+            dependencies.remoteDependencies.coroutinesAdapter
+    )
+
+    kapt(
+            dependencies.appDependencies.daggerXcompiler,
+            dependencies.appDependencies.daggerCompiler,
+    )
+
+    testImplementation(
+            dependencies.testDependencies.jUnit,
+            dependencies.testDependencies.mockk,
+            dependencies.testDependencies.mockitoCore,
+            dependencies.testDependencies.hamCrest,
+            dependencies.testDependencies.archCoreTest,
+            dependencies.testDependencies.hamCrest,
+            dependencies.testDependencies.archCoreTest,
+            dependencies.testDependencies.coroutinesAndroidTest,
+            dependencies.testDependencies.coroutinesTest,
+            dependencies.testDependencies.jUnitX,
+            dependencies.testDependencies.androidCoreTest,
+            dependencies.testDependencies.truth,
+            dependencies.testDependencies.mockitoKotlin
+    )
+
+    androidTestImplementation(
+            dependencies.testDependencies.espressoCore,
+            dependencies.testDependencies.testRule,
+            dependencies.testDependencies.testRunner,
+    )
+
+    testImplementation "org.robolectric:robolectric:4.7.2"
 }

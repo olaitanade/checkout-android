@@ -1,7 +1,8 @@
-package com.tayo.checkoutsample
+package com.tayo.checkoutsample.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.tayo.checkoutsample.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
