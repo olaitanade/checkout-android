@@ -4,7 +4,8 @@ import java.util.*
 
 data class Ticket(
     val id: String,
-    val datetime: Date,
+    val datetime: String,
     val name: String,
+    val price: Double,
     val pictureURL: String
 )

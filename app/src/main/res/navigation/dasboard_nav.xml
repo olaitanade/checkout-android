@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dasboard_nav"
+    app:startDestination="@id/ticketFragment">
+
+    <fragment
+        android:id="@+id/ticketFragment"
+        android:name="com.tayo.checkoutsample.ui.ticket.TicketFragment"
+        android:label="ticket_fragment"
+        tools:layout="@layout/ticket_fragment" >
+        <action
+            android:id="@+id/action_ticketFragment_to_itemFragment"
+            app:destination="@id/itemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemFragment"
+        android:name="com.tayo.checkoutsample.ui.Item.ItemFragment"
+        android:label="item_fragment"
+        tools:layout="@layout/item_fragment" >
+        <action
+            android:id="@+id/action_itemFragment_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.tayo.checkoutsample.ui.checkout.CheckoutFragment"
+        android:label="checkout_fragment"
+        tools:layout="@layout/checkout_fragment" />
+</navigation>
