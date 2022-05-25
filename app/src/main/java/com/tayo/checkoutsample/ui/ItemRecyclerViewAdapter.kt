@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tayo.checkoutsample.data.model.Item
 import com.tayo.checkoutsample.databinding.TicketListItemLayoutBinding
+import com.tayo.checkoutsample.util.Helper.formatAmount
+import com.tayo.checkoutsample.util.Helper.formatDate
 import java.text.SimpleDateFormat
 
 class ItemRecyclerViewAdapter constructor(
@@ -40,18 +42,14 @@ class ItemRecyclerViewAdapter constructor(
     inner class ItemViewHolder(private val binding: TicketListItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        @SuppressLint("SimpleDateFormat")
-        fun formatDate(inputDate: String): String? {
-            val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-            val formatter = SimpleDateFormat("EEE, d MMM yyyy HH:mm Z")
-            return formatter.format(parser.parse(inputDate))
-        }
+
+
 
         fun setData(model: Item) {
             binding.name.text = model.ticket.name
             binding.date.text = formatDate(model.ticket.datetime)
             binding.no.text = "${model.number} tickets"
-            binding.price.text = "$${model.ticket.price} each"
+            binding.price.text = "$${formatAmount(model.ticket.price)} each"
         }
 
     }

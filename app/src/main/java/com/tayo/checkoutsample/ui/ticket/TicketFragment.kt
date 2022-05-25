@@ -12,6 +12,7 @@ import com.tayo.checkoutsample.R
 import com.tayo.checkoutsample.databinding.TicketFragmentBinding
 import com.tayo.checkoutsample.ui.ItemRecyclerViewAdapter
 import com.tayo.checkoutsample.ui.MainActivityViewModel
+import com.tayo.checkoutsample.util.Helper.formatAmount
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,7 +44,7 @@ class TicketFragment : Fragment() {
         }
         activityViewModel.itemsModel.observe(viewLifecycleOwner) {
             itemsRecyclerViewAdapter.addData(it.items)
-            binding.subtotal.text = "Subtotal: $${it.subTotal}"
+            binding.subtotal.text = "Subtotal: $${formatAmount(it.subTotal)}"
         }
         activityViewModel.getCart()
     }

@@ -31,7 +31,7 @@ ext {
     timberVersion = "4.7.1"
     androidCoreTestKtxVersion = "1.4.0"
     mockitoKotlinVersion = "3.2.0"
-
+    jodaVersion = "2.10.13"
     versionMoshi = "1.12.0"
     versionCoroutinesAdapter = "0.9.2"
     loadingButtons = "2.1.0"
@@ -61,7 +61,8 @@ ext {
             androidXViewModel   : "androidx.lifecycle:lifecycle-viewmodel-ktx:${androidLifecycleViewModel}",
             coroutines          : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutinesVersion}",
             coroutinesAndroid   : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutinesVersion}",
-            timber              : "com.jakewharton.timber:timber:${timberVersion}"
+            timber              : "com.jakewharton.timber:timber:${timberVersion}",
+            jodaTime            : "joda-time:joda-time:${jodaVersion}"
     ]
 
     uiDependencies = [

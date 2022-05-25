@@ -71,6 +71,7 @@ dependencies {
             dependencies.appDependencies.coroutinesAndroid,
             dependencies.appDependencies.kotlinDependency,
             dependencies.appDependencies.timber,
+            dependencies.appDependencies.jodaTime,
 
             dependencies.remoteDependencies.gson,
             dependencies.remoteDependencies.retrofit,
